@@ -1,14 +1,17 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import FontFaces from '../components/fontFaces';
 import SeoTags from '../components/seoTags';
+import FontFaces from '../components/fontFaces';
+import Layout from '../components/layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <SeoTags />
       <FontFaces />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }

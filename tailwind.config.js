@@ -5,7 +5,15 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      mairy: ['Mairy', 'Helvetica', 'Arial', 'sans-serif'],
+      kghappy: ['"KG Happy"', 'Helvetica', 'Arial', 'sans-serif'],
+    },
+    extend: {
+      colors: {
+        'blue-950': 'rgba(25, 67, 139, 1)',
+      },
+    },
   },
   plugins: [],
 };

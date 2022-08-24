@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply overflow-y-scroll;
+  }
+
+  body {
+    @apply font-mairy;
+    @apply bg-blue-950;
+    @apply antialiased;
+    @apply text-white;
+  }
+
+  html,
+  body,
+  body > div:first-child {
+    @apply h-full;
+  }
+
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='date'] {
+    -webkit-appearance: none;
+  }
+}
