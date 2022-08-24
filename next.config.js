@@ -7,7 +7,9 @@ const nextConfig = {
   swcMinify: true,
   pageExtensions: ['page.tsx'],
   trailingSlash: true,
-  basePath: isProd ? '/nextjs-typescript-tailwindcss-boilerplate' : '',
+  basePath: isProd
+    ? '/aptamil-build-your-babys-foundation-to-be-one-step-ahead-app'
+    : '',
 };
 
 module.exports = nextConfig;

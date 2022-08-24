@@ -1,8 +1,8 @@
-# Next.js Boilerplate (TypeScript, TailwindCSS)
+# Aptamil Build Your Baby's Foundation To Be One Step Ahead App
 
-[![CI/CD](https://github.com/dominicarrojado/nextjs-typescript-tailwindcss-boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/dominicarrojado/nextjs-typescript-tailwindcss-boilerplate/actions/workflows/ci.yml) [![codecov](https://codecov.io/gh/dominicarrojado/nextjs-typescript-tailwindcss-boilerplate/branch/main/graph/badge.svg?token=NnQcGFOMPb)](https://codecov.io/gh/dominicarrojado/nextjs-typescript-tailwindcss-boilerplate)
+[![CI/CD](https://github.com/dominicarrojado/aptamil-build-your-babys-foundation-to-be-one-step-ahead-app/actions/workflows/ci.yml/badge.svg)](https://github.com/dominicarrojado/aptamil-build-your-babys-foundation-to-be-one-step-ahead-app/actions/workflows/ci.yml)
 
-A local development setup or boilerplate for [Next.js](https://nextjs.org/) with [TypeScript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/).
+A campaign app for Aptamil built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/) and [Tailwind CSS](https://tailwindcss.com/).
 
 ## Quick Start
 
@@ -10,13 +10,13 @@ A local development setup or boilerplate for [Next.js](https://nextjs.org/) with
 2. Clone the app:
 
 ```bash
-git clone git@github.com:dominicarrojado/nextjs-typescript-tailwindcss-boilerplate.git
+git clone git@github.com:dominicarrojado/aptamil-build-your-babys-foundation-to-be-one-step-ahead-app.git
 ```
 
 3. Install dependencies:
 
 ```bash
-cd nextjs-typescript-tailwindcss-boilerplate
+cd aptamil-build-your-babys-foundation-to-be-one-step-ahead-app
 yarn install
 ```
 
@@ -56,7 +56,3 @@ yarn export
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
-
-## Learn
-
-Learn how to build this setup or boilerplate [here](https://dominicarrojado.com/posts/local-development-setup-for-nextjs-typescript-and-tailwindcss-projects/).
