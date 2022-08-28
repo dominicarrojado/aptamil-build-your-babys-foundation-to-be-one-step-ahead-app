@@ -1,5 +1,8 @@
+import { Route } from './types';
+
 export const SITE_NAME = 'Dominic Arrojado';
-export const PROJECT_TITLE = 'Singtel Data X Infinity Event Singapore';
+export const PROJECT_TITLE =
+  "Aptamil Build Your Baby's Foundation To Be One Step Ahead";
 export const MAIN_AUTHOR = 'Dominic Arrojado';
 export const MAIN_TITLE = `${PROJECT_TITLE} | ${SITE_NAME}`;
 export const MAIN_DESC =
@@ -23,4 +26,27 @@ export const FONTS = [
   'Mairy-Regular',
   'KG-Happy-Bold',
   'KG-Happy-Regular',
+];
+
+export const MENU_ITEMS = [
+  {
+    path: Route.HOME,
+    title: 'Home',
+  },
+  {
+    path: Route.NATURAL_DEFENCES,
+    title: 'Natural Defences',
+  },
+  {
+    path: Route.BRAIN_DEVELOPMENT,
+    title: 'Brain Development',
+  },
+  {
+    path: Route.HOW_TO_WIN,
+    title: 'How to Win',
+  },
+  {
+    path: Route.TEST_YOUR_KNOWLEDGE,
+    title: 'Test your Knowledge',
+  },
 ];
