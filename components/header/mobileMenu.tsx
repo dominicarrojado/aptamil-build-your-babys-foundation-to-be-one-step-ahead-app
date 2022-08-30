@@ -52,6 +52,7 @@ export default function MobileMenu() {
               <nav className="flex flex-col gap-5">
                 {MENU_ITEMS.map((menuItem, idx) => {
                   const num = (idx + 1).toString();
+                  const isActive = pathname === menuItem.path;
 
                   return (
                     <Transition
@@ -73,9 +74,10 @@ export default function MobileMenu() {
                           className={cn(
                             'flex items-center font-kghappy font-bold',
                             {
-                              'text-sky-450': pathname === menuItem.path,
+                              'text-sky-450': isActive,
                             }
                           )}
+                          aria-current={isActive ? 'page' : undefined}
                           onClick={() => close()}
                         >
                           <img
