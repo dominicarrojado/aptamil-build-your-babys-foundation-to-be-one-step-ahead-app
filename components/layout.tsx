@@ -16,7 +16,7 @@ export default function Layout({ children }: Props) {
       <main
         className={cn(
           'flex items-center flex-1 min-h-0 w-full h-full',
-          'lg:pl-[170px] lg:pr-[130px]'
+          'lg:pl-[170px] lg:pr-[130px] lg:-mt-20'
         )}
       >
         <div className="w-full">{children}</div>

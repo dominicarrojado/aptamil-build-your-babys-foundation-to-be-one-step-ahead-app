@@ -12,7 +12,7 @@ export default function DesktopMenu() {
     <div
       className={cn(
         'hidden',
-        'lg:flex lg:flex-col lg:justify-center lg:h-full lg:absolute lg:left-[40px]'
+        'lg:flex lg:flex-col lg:justify-center lg:h-full lg:fixed lg:left-[40px]'
       )}
     >
       <nav className="group relative flex flex-col justify-around w-[130px] h-1/2 max-h-[750px]">

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import cn from 'classnames';
 import { getAssetUrl } from '../../lib/assets';
 import MobileMenu from './mobileMenu';
 import { Route } from '../../lib/types';
@@ -15,9 +16,9 @@ export default function Header() {
               'images/logo-aptamil-gold-plus-follow-on-formula.png'
             )}
             alt="Aptamil Gold+ Follow-On Formula logo"
-            width="90"
-            height="62"
-            className="w-auto h-[62px] aspect-[90/62]"
+            width="107"
+            height="74"
+            className={cn('w-auto h-[62px] aspect-[107/74]', 'lg:h-[74px]')}
           />
         </a>
       </Link>
