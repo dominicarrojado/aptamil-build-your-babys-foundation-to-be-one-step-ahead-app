@@ -10,7 +10,7 @@ export default function Header() {
     <header className="flex justify-between items-center pt-[30px] pb-[20px] px-[20px]">
       <MobileMenu />
       <Link href={Route.HOME}>
-        <a className="flex-shrink-0 ml-auto">
+        <a className="flex-shrink-0 ml-auto cursor-pointer z-10">
           <img
             src={getAssetUrl(
               'images/logo-aptamil-gold-plus-follow-on-formula.png'

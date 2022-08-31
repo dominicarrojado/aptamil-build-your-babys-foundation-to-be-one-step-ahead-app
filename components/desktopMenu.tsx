@@ -24,7 +24,7 @@ export default function DesktopMenu() {
           return (
             <Link key={num} href={menuItem.path}>
               <a
-                className="flex items-center font-kghappy font-bold text-[10px] text-sky-450"
+                className="group flex items-center font-kghappy font-bold text-[10px] text-sky-450"
                 aria-current={isActive ? 'page' : undefined}
                 onClick={() => close()}
               >
@@ -38,7 +38,9 @@ export default function DesktopMenu() {
                     className={cn(
                       'block transition transform',
                       'group-hover:translate-x-0',
+                      'group-focus-visible:translate-x-0',
                       'hover:opacity-80',
+                      'group-focus-visible:opacity-80',
                       isActive
                         ? 'translate-x-0 opacity-100'
                         : 'opacity-40 -translate-x-full'

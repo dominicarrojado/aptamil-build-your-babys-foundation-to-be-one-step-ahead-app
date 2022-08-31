@@ -1,22 +1,32 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import cn from 'classnames';
-import { Popover, Transition } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { getAssetUrl } from '../../lib/assets';
 import { MENU_ITEMS } from '../../lib/constants';
 
 export default function MobileMenu() {
   const { pathname } = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const openDialog = () => setIsOpen(true);
+  const closeDialog = () => setIsOpen(false);
 
   return (
-    <Popover as={Fragment}>
-      <Popover.Button className="outline-none ml-[5px] lg:hidden">
+    <>
+      <button
+        className={cn(
+          'outline-none ml-[5px] lg:hidden',
+          'transition-colors before:hover:text-gray-300 focus-visible:text-gray-300'
+        )}
+        onClick={openDialog}
+      >
         <span className="sr-only">Open menu</span>
         <Bars3Icon className="h-8 w-8" aria-hidden="true" />
-      </Popover.Button>
+      </button>
       <Transition
+        show={isOpen}
         as={Fragment}
         enter="transition ease-out duration-300"
         enterFrom="opacity-0 -translate-x-full"
@@ -25,16 +35,13 @@ export default function MobileMenu() {
         leaveFrom="opacity-100 translate-x-0"
         leaveTo="opacity-0 -translate-x-full"
       >
-        <Popover.Panel
-          focus
-          className="absolute inset-0 bg-blue-950 z-10 p-[20px]"
-        >
-          {({ open, close }) => (
+        <Dialog as={Fragment} onClose={closeDialog}>
+          <Dialog.Panel className="fixed inset-0 bg-blue-950 p-[20px] z-10 overflow-y-auto">
             <Fragment>
               <div className="w-full flex">
                 <Transition
                   as={Fragment}
-                  show={open}
+                  show={isOpen}
                   appear={true}
                   enter="transition-opacity ease-out duration-300 delay-500"
                   enterFrom="opacity-0"
@@ -43,10 +50,16 @@ export default function MobileMenu() {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <Popover.Button className="ml-auto outline-none">
+                  <button
+                    className={cn(
+                      'ml-auto outline-none',
+                      'transition-colors hover:text-gray-300 focus-visible:text-gray-300'
+                    )}
+                    onClick={closeDialog}
+                  >
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon className="h-8 w-8" aria-hidden="true" />
-                  </Popover.Button>
+                  </button>
                 </Transition>
               </div>
               <nav className="flex flex-col gap-5">
@@ -57,7 +70,7 @@ export default function MobileMenu() {
                   return (
                     <Transition
                       key={num}
-                      show={open}
+                      show={isOpen}
                       appear={true}
                       enter="transition ease-out duration-300"
                       enterFrom="opacity-0 -translate-x-[20px]"
@@ -78,7 +91,7 @@ export default function MobileMenu() {
                             }
                           )}
                           aria-current={isActive ? 'page' : undefined}
-                          onClick={() => close()}
+                          onClick={closeDialog}
                         >
                           <img
                             src={getAssetUrl(`images/icon-circle-${num}.png`)}
@@ -93,9 +106,9 @@ export default function MobileMenu() {
                 })}
               </nav>
             </Fragment>
-          )}
-        </Popover.Panel>
+          </Dialog.Panel>
+        </Dialog>
       </Transition>
-    </Popover>
+    </>
   );
 }
