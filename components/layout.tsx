@@ -13,15 +13,17 @@ export default function Layout({ children }: Props) {
     <div className="flex flex-col min-h-full">
       <Header />
       <DesktopMenu />
-      <main
+      <div
         className={cn(
           'flex items-center flex-1 min-h-0 w-full h-full',
           'lg:pl-[170px] lg:pr-[130px] lg:-mt-20'
         )}
       >
-        <div className="w-full">{children}</div>
-      </main>
-      <Footer />
+        <div className="w-full">
+          <main>{children}</main>
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 }

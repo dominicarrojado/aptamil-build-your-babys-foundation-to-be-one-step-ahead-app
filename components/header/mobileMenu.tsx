@@ -16,6 +16,7 @@ export default function MobileMenu() {
   return (
     <>
       <button
+        type="button"
         className={cn(
           'outline-none ml-[5px] lg:hidden',
           'transition-colors before:hover:text-gray-300 focus-visible:text-gray-300'
@@ -51,6 +52,7 @@ export default function MobileMenu() {
                   leaveTo="opacity-0"
                 >
                   <button
+                    type="button"
                     className={cn(
                       'ml-auto outline-none',
                       'transition-colors hover:text-gray-300 focus-visible:text-gray-300'

@@ -45,7 +45,7 @@ export default function Home() {
               <sup>1</sup> is manufactured!
             </p>
           </div>
-          <div className={cn('max-w-[610px] mx-auto', 'sm:flex')}>
+          <div className={cn('max-w-[610px] mx-auto mt-6', 'sm:flex')}>
             <div className={cn('sm:flex-shrink-0')}>
               <img
                 src={getAssetUrl(
@@ -61,7 +61,7 @@ export default function Home() {
               <div
                 className={cn(
                   'relative mt-[20px] border-[3px] rounded-[20px] border-sky-550 pt-[30px] px-[15px] pb-[15px] text-center font-kghappy text-[13px] font-bold',
-                  'sm:text-[16px]'
+                  'xl:text-[16px]'
                 )}
               >
                 <div className="absolute -top-[20px] inset-x-0 px-[15px]">
