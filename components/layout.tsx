@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import cn from 'classnames';
+import Background from './background';
 import Header from './header';
 import Footer from './footer';
 import DesktopMenu from './desktopMenu';
@@ -11,6 +12,7 @@ type Props = {
 export default function Layout({ children }: Props) {
   return (
     <div className="flex flex-col min-h-full">
+      <Background />
       <Header />
       <DesktopMenu />
       <div

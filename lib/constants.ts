@@ -1,3 +1,4 @@
+import { getAssetUrl } from './assets';
 import { Route } from './types';
 
 export const SITE_NAME = 'Dominic Arrojado';
@@ -48,5 +49,28 @@ export const MENU_ITEMS = [
   {
     path: Route.TEST_YOUR_KNOWLEDGE,
     title: 'Test your Knowledge',
+  },
+];
+
+export const BACKGROUND_IMAGES = [
+  {
+    path: Route.HOME,
+    src: getAssetUrl('images/bg-space-1.png'),
+  },
+  {
+    path: Route.NATURAL_DEFENCES,
+    src: getAssetUrl('images/bg-space-2.png'),
+  },
+  {
+    path: Route.BRAIN_DEVELOPMENT,
+    src: getAssetUrl('images/bg-space-3.png'),
+  },
+  {
+    path: Route.HOW_TO_WIN,
+    src: getAssetUrl('images/bg-space-4.png'),
+  },
+  {
+    path: Route.TEST_YOUR_KNOWLEDGE,
+    src: getAssetUrl('images/bg-space-5.png'),
   },
 ];

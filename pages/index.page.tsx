@@ -1,12 +1,13 @@
 import cn from 'classnames';
 import Link from 'next/link';
 import { getAssetUrl } from '../lib/assets';
+import FadeIn from '../components/fadeIn';
 import ButtonLink from '../components/buttonLink';
 import { Route } from '../lib/types';
 
 export default function Home() {
   return (
-    <>
+    <FadeIn>
       <div
         className={cn(
           'px-[20px]',
@@ -99,6 +100,6 @@ export default function Home() {
           <ButtonLink>Join Now</ButtonLink>
         </Link>
       </div>
-    </>
+    </FadeIn>
   );
 }

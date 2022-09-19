@@ -1,5 +1,10 @@
 import React from 'react';
+import FadeIn from '../components/fadeIn';
 
 export default function NaturalDefences() {
-  return <div>This is the natural defences page.</div>;
+  return (
+    <FadeIn>
+      <div>This is the natural defences page.</div>
+    </FadeIn>
+  );
 }
