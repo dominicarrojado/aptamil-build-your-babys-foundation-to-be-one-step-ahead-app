@@ -37,13 +37,9 @@ export default function DesktopMenu() {
                   <span
                     className={cn(
                       'block transition transform',
-                      'group-hover:translate-x-0',
-                      'group-focus-visible:translate-x-0',
-                      'hover:opacity-80',
-                      'group-focus-visible:opacity-80',
                       isActive
                         ? 'translate-x-0 opacity-100'
-                        : 'opacity-40 -translate-x-full'
+                        : 'opacity-40 -translate-x-full group-hover:translate-x-0 group-focus-visible:translate-x-0 hover:opacity-80 group-focus-visible:opacity-80'
                     )}
                   >
                     {menuItem.title}
