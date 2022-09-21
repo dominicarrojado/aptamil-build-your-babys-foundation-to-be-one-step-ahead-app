@@ -87,8 +87,10 @@ export default function Home() {
         </div>
         <div className={cn('xl:w-[42%]')}>
           <img
-            src={getAssetUrl('images/aptamil-gold-plus.png')}
-            alt="Aptamil Gold+"
+            src={getAssetUrl(
+              'images/product-aptamil-gold-plus-stage-2-dha-level-lg.png'
+            )}
+            alt="Aptamil Gold+ Stage 2 DHA level"
             width="509"
             height="583"
             className="mx-auto aspect-[509/583]"

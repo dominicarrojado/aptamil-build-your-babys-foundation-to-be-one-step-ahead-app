@@ -1,13 +1,14 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import cn from 'classnames';
+import FadeIn from './fadeIn';
 import { BACKGROUND_IMAGES } from '../lib/constants';
 
 export default function Background() {
   const { pathname: currentPath } = useRouter();
 
   return (
-    <>
+    <FadeIn>
       {BACKGROUND_IMAGES.map(({ path, src }) => (
         <div
           key={path}
@@ -21,6 +22,6 @@ export default function Background() {
           }}
         />
       ))}
-    </>
+    </FadeIn>
   );
 }
