@@ -6,7 +6,7 @@ type Props = HTMLProps<HTMLButtonElement> & {
 };
 
 export const buttonClassName = cn(
-  'relative inline-block rounded-[30px] bg-sky-450 py-[20px] px-[45px] font-kghappy text-white text-[16px] font-bold uppercase select-none',
+  'relative inline-block rounded-[30px] bg-sky-450 py-[20px] px-[45px] font-kghappy text-white text-[16px] text-center font-bold uppercase select-none',
   'transition hover:bg-sky-750 active:bg-sky-775'
 );
 

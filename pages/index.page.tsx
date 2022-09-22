@@ -46,8 +46,14 @@ export default function Home() {
               <sup>1</sup> is manufactured!
             </p>
           </div>
-          <div className={cn('max-w-[610px] mx-auto mt-6', 'sm:flex')}>
-            <div className={cn('sm:flex-shrink-0')}>
+          <div
+            className={cn(
+              'max-w-[610px] mx-auto mt-6',
+              'sm:flex',
+              'xl:max-w-full'
+            )}
+          >
+            <div className={cn('sm:flex-shrink-0', 'xl:w-3/12')}>
               <img
                 src={getAssetUrl(
                   'images/trip-to-new-zealand-and-four-aptamil.png'
@@ -58,7 +64,7 @@ export default function Home() {
                 className="aspect-[131/155] mx-auto"
               />
             </div>
-            <div className={cn('p-4', 'lg:pl-6')}>
+            <div className={cn('p-4', 'lg:pl-6', 'xl:w-9/12')}>
               <div
                 className={cn(
                   'relative mt-[20px] border-[3px] rounded-[20px] border-sky-550 pt-[30px] px-[15px] pb-[15px] text-center font-kghappy text-[13px] font-bold',

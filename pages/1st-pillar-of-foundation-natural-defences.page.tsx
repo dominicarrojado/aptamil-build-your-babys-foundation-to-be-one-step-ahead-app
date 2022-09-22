@@ -39,7 +39,7 @@ export default function NaturalDefences() {
             className={cn(
               'mt-3 text-[18px] font-light',
               'sm:text-[23px]',
-              'xl:max-w-xl xl:text-left'
+              'xl:max-w-[60%] xl:text-left'
             )}
           >
             Clinical Study published in Journal of Pediatric Gastroenterology
