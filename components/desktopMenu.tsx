@@ -15,8 +15,13 @@ export default function DesktopMenu() {
         'lg:flex lg:flex-col lg:justify-center lg:h-full lg:fixed lg:left-[40px] lg:z-20'
       )}
     >
-      <nav className="group relative flex flex-col justify-around w-[130px] h-1/2 max-h-[750px]">
-        <div className="absolute top-0 left-[15px] h-full border-l-2 border-dashed border-sky-450 -z-10 opacity-40"></div>
+      <nav
+        className={cn(
+          'relative flex flex-col justify-around w-[130px] h-1/2 max-h-[750px]',
+          "before:content-[''] before:absolute before:top-0 before:left-[15px] before:h-full before:border-l-2 before:border-dashed before:border-sky-450 before:-z-10 before:opacity-40",
+          '[&:hover>a>span>span]:translate-x-0 [&:focus-visible>a>span>span]:translate-x-0 [&:focus-visible>a>span>span]:opacity-80'
+        )}
+      >
         {MENU_ITEMS.map((menuItem, idx) => {
           const num = (idx + 1).toString();
           const isActive = pathname === menuItem.path;
@@ -37,10 +42,10 @@ export default function DesktopMenu() {
                   <span
                     className={cn(
                       'flex items-center',
-                      'transition transform',
+                      'transition',
                       isActive
                         ? 'translate-x-0 opacity-100'
-                        : 'opacity-40 -translate-x-full hover:opacity-80 group-hover:translate-x-0 group-focus-visible:translate-x-0 group-focus-visible:opacity-80'
+                        : 'opacity-40 -translate-x-full group-hover:opacity-80'
                     )}
                   >
                     {menuItem.title}
