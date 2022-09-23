@@ -12,7 +12,7 @@ export default function DesktopMenu() {
     <div
       className={cn(
         'hidden',
-        'lg:flex lg:flex-col lg:justify-center lg:h-full lg:fixed lg:left-[40px]'
+        'lg:flex lg:flex-col lg:justify-center lg:h-full lg:fixed lg:left-[40px] lg:z-20'
       )}
     >
       <nav className="group relative flex flex-col justify-around w-[130px] h-1/2 max-h-[750px]">
@@ -36,7 +36,7 @@ export default function DesktopMenu() {
                 <span className="block overflow-hidden">
                   <span
                     className={cn(
-                      'flex items-center min-h-[33px]',
+                      'flex items-center',
                       'transition transform',
                       isActive
                         ? 'translate-x-0 opacity-100'

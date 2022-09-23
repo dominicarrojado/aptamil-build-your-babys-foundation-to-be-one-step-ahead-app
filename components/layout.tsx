@@ -17,7 +17,7 @@ export default function Layout({ children }: Props) {
       <DesktopMenu />
       <div
         className={cn(
-          'flex items-center flex-1 min-h-0 w-full h-full',
+          'flex items-center flex-1 min-h-0 w-full h-full z-10',
           'lg:pl-[170px] lg:pr-[130px] lg:-mt-20'
         )}
       >

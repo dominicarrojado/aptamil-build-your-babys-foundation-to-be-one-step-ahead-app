@@ -12,7 +12,13 @@ import { Route } from '../lib/types';
 export default function HowToWin() {
   return (
     <FadeIn>
-      <div className={cn('max-w-[800px] mx-auto px-[20px]', 'lg:max-w-full')}>
+      <div
+        className={cn(
+          'max-w-[800px] mx-auto px-[20px]',
+          'sm:px-[30px]',
+          'lg:max-w-full lg:px-[20px]'
+        )}
+      >
         <h1
           className={cn(
             'mt-3 font-kghappy text-[30px] text-center uppercase',
@@ -24,8 +30,15 @@ export default function HowToWin() {
         <div className="xl:flex xl:flex-col xl:items-center">
           <div className="md:flex md:justify-center md:gap-8">
             <div className={cn('mt-8', 'md:max-w-[365px]')}>
-              <StepItem number={1} title="Answer" />
-              <div className="md:min-h-[118px]">
+              <StepItem
+                title="Answer"
+                imageSrc={getAssetUrl('images/icon-step-1.png')}
+                imageAlt="Step One"
+                imageWidth="61"
+                imageHeight="56"
+                imageClassName="aspect-[61/56]"
+              />
+              <div className="md:min-h-[117px]">
                 <img
                   src={getAssetUrl('images/illus-drag-shield.png')}
                   alt="An illustration of dragging shield"
@@ -40,7 +53,14 @@ export default function HowToWin() {
               </StepContent>
             </div>
             <div className={cn('mt-8', 'md:max-w-[365px]')}>
-              <StepItem number={2} title="Share/Purchase" />
+              <StepItem
+                title="Share/Purchase"
+                imageSrc={getAssetUrl('images/icon-step-2.png')}
+                imageAlt="Step Two"
+                imageWidth="60"
+                imageHeight="55"
+                imageClassName="aspect-[60/55]"
+              />
               <img
                 src={getAssetUrl('images/illus-share-on-mobile.png')}
                 alt="An illustration of sharing on mobile"
@@ -55,7 +75,14 @@ export default function HowToWin() {
             </div>
           </div>
           <div className={cn('mt-8')}>
-            <StepItem number={3} title="Win" />
+            <StepItem
+              title="Win"
+              imageSrc={getAssetUrl('images/icon-step-3.png')}
+              imageAlt="Step Three"
+              imageWidth="55"
+              imageHeight="60"
+              imageClassName="aspect-[55/60]"
+            />
             <div className={cn('xl:flex xl:items-center xl:gap-4')}>
               <div
                 className={cn(

@@ -37,7 +37,7 @@ export default function MobileMenu() {
         leaveTo="opacity-0 -translate-x-full"
       >
         <Dialog as={Fragment} onClose={closeDialog}>
-          <Dialog.Panel className="fixed inset-0 bg-blue-950 p-[20px] z-10 overflow-y-auto">
+          <Dialog.Panel className="fixed inset-0 bg-blue-950 p-[20px] z-30 overflow-y-auto">
             <Fragment>
               <div className="w-full flex">
                 <Transition

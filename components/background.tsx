@@ -13,8 +13,8 @@ export default function Background() {
         <div
           key={path}
           className={cn(
-            'fixed w-full h-full inset-0 bg-cover bg-center bg-no-repeat -z-10',
-            'transition-opacity duration-500',
+            'fixed w-full h-full inset-0 bg-cover bg-center bg-no-repeat',
+            'transition-opacity duration-700',
             currentPath === path ? 'opacity-100' : 'opacity-0'
           )}
           style={{

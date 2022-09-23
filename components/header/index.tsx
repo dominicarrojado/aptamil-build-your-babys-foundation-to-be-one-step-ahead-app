@@ -7,7 +7,7 @@ import { Route } from '../../lib/types';
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center pt-[30px] pb-[20px] px-[20px]">
+    <header className="flex justify-between items-center pt-[30px] pb-[20px] px-[20px] z-20">
       <MobileMenu />
       <Link href={Route.HOME}>
         <a className="flex-shrink-0 ml-auto cursor-pointer z-10">

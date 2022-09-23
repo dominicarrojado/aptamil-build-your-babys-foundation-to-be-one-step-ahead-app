@@ -1,13 +1,23 @@
 import React from 'react';
 import cn from 'classnames';
-import { getAssetUrl } from '../lib/assets';
 
 type Props = {
-  number: 1 | 2 | 3;
   title: string;
+  imageSrc: string;
+  imageAlt: string;
+  imageWidth: string;
+  imageHeight: string;
+  imageClassName: string;
 };
 
-export default function StepItem({ number, title }: Props) {
+export default function StepItem({
+  title,
+  imageSrc,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+  imageClassName,
+}: Props) {
   return (
     <h2
       className={cn(
@@ -16,13 +26,14 @@ export default function StepItem({ number, title }: Props) {
       )}
     >
       <img
-        src={getAssetUrl(`images/icon-step-${number}.png`)}
-        alt={`Step ${number}`}
-        width="61"
-        height="56"
+        src={imageSrc}
+        alt={imageAlt}
+        width={imageWidth}
+        height={imageHeight}
         className={cn(
-          'w-auto h-[45px] aspect-[61/56] mr-2',
-          'sm:h-auto sm:mr-3'
+          imageClassName,
+          'w-[50px] h-auto mr-2',
+          'sm:w-auto sm:mr-3'
         )}
       />{' '}
       {title}

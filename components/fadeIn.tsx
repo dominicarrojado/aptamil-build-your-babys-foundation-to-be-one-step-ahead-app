@@ -17,7 +17,7 @@ export default function FadeIn({ children }: Props) {
   return (
     <div
       className={cn(
-        'transition-opacity duration-500',
+        'transition-opacity duration-700',
         isMounted ? 'opacity-100' : 'opacity-0'
       )}
     >
