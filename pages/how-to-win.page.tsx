@@ -113,7 +113,9 @@ export default function HowToWin() {
               </div>
               <div className="sm:flex sm:justify-center sm:items-center">
                 <img
-                  src={getAssetUrl('images/aptamil-gold-plus-products.png')}
+                  src={getAssetUrl(
+                    'images/product-aptamil-gold-plus-all-stages.png'
+                  )}
                   alt="Aptamil Gold+ products"
                   width="159"
                   height="95"
