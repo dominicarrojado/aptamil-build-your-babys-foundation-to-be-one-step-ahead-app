@@ -5,12 +5,14 @@ import FontFaces from '../components/fontFaces';
 import Layout from '../components/layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { withMenu, ...otherPageProps } = pageProps;
+
   return (
     <>
       <SeoTags />
       <FontFaces />
-      <Layout>
-        <Component {...pageProps} />
+      <Layout withMenu={withMenu}>
+        <Component {...otherPageProps} />
       </Layout>
     </>
   );

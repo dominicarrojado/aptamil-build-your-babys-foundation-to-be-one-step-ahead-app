@@ -7,18 +7,27 @@ import DesktopMenu from './desktopMenu';
 
 type Props = {
   children: ReactNode;
+  withMenu?: boolean;
 };
 
-export default function Layout({ children }: Props) {
+export default function Layout({ withMenu = true, children }: Props) {
   return (
-    <div className="flex flex-col min-h-full">
+    <div className="relative flex flex-col min-h-full">
       <Background />
-      <Header />
-      <DesktopMenu />
+      {withMenu && (
+        <>
+          <Header />
+          <DesktopMenu />
+        </>
+      )}
       <div
         className={cn(
           'flex items-center flex-1 min-h-0 w-full h-full z-10',
-          'lg:pl-[170px] lg:pr-[130px] lg:-mt-20'
+          'lg:pr-[130px]',
+          {
+            'lg:pl-[180px] lg:-mt-20': withMenu,
+            'lg:pl-[130px]': !withMenu,
+          }
         )}
       >
         <div className="w-full">

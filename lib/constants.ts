@@ -73,4 +73,8 @@ export const BACKGROUND_IMAGES = [
     path: Route.TEST_YOUR_KNOWLEDGE,
     src: getAssetUrl('images/bg-space-5.png'),
   },
+  {
+    path: Route.WIN,
+    src: getAssetUrl('images/bg-space-6.png'),
+  },
 ];
