@@ -2,14 +2,17 @@ import React from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import ActionItem from '../components/actionItem';
-import FadeIn from '../components/fadeIn';
+import Background from '../components/background';
 import DropBrainDevelopment from '../components/dropBrainDevelopment';
 import DropNaturalDefences from '../components/dropNaturalDefences';
+import FadeIn from '../components/fadeIn';
+import Footer from '../components/footer';
 
 export default function TestYourKnowledge() {
   return (
     <FadeIn>
-      <div
+      <Background src={getAssetUrl('images/bg-space-5.png')} />
+      <main
         className={cn(
           'max-w-[600px] mx-auto px-[20px] pt-[10px] pb-[20px]',
           'md:max-w-[720px] md:rounded-[20px] md:bg-blue-650 md:mt-[60px] md:pb-[40px]',
@@ -110,7 +113,8 @@ export default function TestYourKnowledge() {
             </div>
           </div>
         </div>
-      </div>
+      </main>
+      <Footer />
     </FadeIn>
   );
 }

@@ -1,8 +1,11 @@
 import cn from 'classnames';
 import React from 'react';
+import { getAssetUrl } from '../lib/assets';
 import Alert from '../components/alert';
+import Background from '../components/background';
 import Button from '../components/button';
 import FadeIn from '../components/fadeIn';
+import Footer from '../components/footer';
 import InputBox from '../components/inputBox';
 import InputCheck from '../components/inputCheck';
 import InputLabel from '../components/inputLabel';
@@ -16,7 +19,8 @@ export default function Win() {
 
   return (
     <FadeIn>
-      <div
+      <Background src={getAssetUrl('images/bg-space-6.png')} />
+      <main
         className={cn(
           'max-w-[800px] mx-auto py-[30px] px-[15px]',
           'md:pt-[50px]',
@@ -24,7 +28,7 @@ export default function Win() {
           'xl:pt-[70px] xl:max-w-5xl'
         )}
       >
-        <h3
+        <h1
           className={cn(
             'font-kghappy text-[30px] text-center',
             'md:text-[35px]'
@@ -33,7 +37,7 @@ export default function Win() {
           You have unlocked the nutrients needed for{' '}
           <span className="text-sky-450">Brain Development</span> and{' '}
           <span className="text-sky-450">Natural Defences!</span>
-        </h3>
+        </h1>
         <p
           className={cn(
             'mt-4 font-kghappy text-[16px] font-bold text-center',
@@ -130,7 +134,8 @@ export default function Win() {
             <Button type="submit">Submit</Button>
           </div>
         </form>
-      </div>
+      </main>
+      <Footer />
     </FadeIn>
   );
 }

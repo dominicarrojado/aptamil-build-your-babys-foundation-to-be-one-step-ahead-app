@@ -2,17 +2,20 @@ import Link from 'next/link';
 import React from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
-import FadeIn from '../components/fadeIn';
+import Background from '../components/background';
 import ButtonLink from '../components/buttonLink';
-import StepItem from '../components/stepItem';
+import FadeIn from '../components/fadeIn';
+import Footer from '../components/footer';
 import PrizeItem from '../components/prizeItem';
 import StepContent from '../components/stepContent';
+import StepItem from '../components/stepItem';
 import { Route } from '../lib/types';
 
 export default function HowToWin() {
   return (
     <FadeIn>
-      <div
+      <Background src={getAssetUrl('images/bg-space-4.png')} />
+      <main
         className={cn(
           'max-w-[800px] mx-auto px-[20px]',
           'sm:px-[30px]',
@@ -149,7 +152,8 @@ export default function HowToWin() {
             <ButtonLink>Test your knowledge and win!</ButtonLink>
           </Link>
         </div>
-      </div>
+      </main>
+      <Footer />
     </FadeIn>
   );
 }

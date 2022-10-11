@@ -2,14 +2,17 @@ import Link from 'next/link';
 import React from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
-import FadeIn from '../components/fadeIn';
+import Background from '../components/background';
 import ButtonLink from '../components/buttonLink';
+import FadeIn from '../components/fadeIn';
+import Footer from '../components/footer';
 import { Route } from '../lib/types';
 
 export default function NaturalDefences() {
   return (
     <FadeIn>
-      <div className="px-[20px] text-center">
+      <Background src={getAssetUrl('images/bg-space-2.png')} />
+      <main className="px-[20px] text-center">
         <img
           src={getAssetUrl('images/banner-1st-pillar-of-foundation.png')}
           alt="1st Pillar of Foundation"
@@ -97,7 +100,8 @@ export default function NaturalDefences() {
             <ButtonLink>Learn more about brain development</ButtonLink>
           </Link>
         </div>
-      </div>
+      </main>
+      <Footer />
     </FadeIn>
   );
 }

@@ -2,16 +2,19 @@ import Link from 'next/link';
 import React from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
-import FadeIn from '../components/fadeIn';
+import Background from '../components/background';
 import ButtonLink from '../components/buttonLink';
-import StageItem from '../components/stageItem';
+import FadeIn from '../components/fadeIn';
+import Footer from '../components/footer';
 import ProductItem from '../components/productItem';
+import StageItem from '../components/stageItem';
 import { Route } from '../lib/types';
 
 export default function NaturalDefences() {
   return (
     <FadeIn>
-      <div className="px-[20px] text-center">
+      <Background src={getAssetUrl('images/bg-space-3.png')} />
+      <main className="px-[20px] text-center">
         <img
           src={getAssetUrl('images/banner-2nd-pillar-of-foundation.png')}
           alt="2nd Pillar of Foundation"
@@ -157,7 +160,8 @@ export default function NaturalDefences() {
             <ButtonLink>How to Win?</ButtonLink>
           </Link>
         </div>
-      </div>
+      </main>
+      <Footer />
     </FadeIn>
   );
 }

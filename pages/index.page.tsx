@@ -1,14 +1,17 @@
 import cn from 'classnames';
 import Link from 'next/link';
 import { getAssetUrl } from '../lib/assets';
-import FadeIn from '../components/fadeIn';
+import Background from '../components/background';
 import ButtonLink from '../components/buttonLink';
+import FadeIn from '../components/fadeIn';
+import Footer from '../components/footer';
 import { Route } from '../lib/types';
 
 export default function Home() {
   return (
     <FadeIn>
-      <div className={cn('px-[20px]', 'xl:px-0')}>
+      <Background src={getAssetUrl('images/bg-space-1.png')} />
+      <main className={cn('px-[20px]', 'xl:px-0')}>
         <div className="xl:flex xl:items-center xl:gap-[15px]">
           <div className={cn('xl:w-[58%]')}>
             <h1>
@@ -104,7 +107,8 @@ export default function Home() {
             <ButtonLink>Join Now</ButtonLink>
           </Link>
         </div>
-      </div>
+      </main>
+      <Footer />
     </FadeIn>
   );
 }
