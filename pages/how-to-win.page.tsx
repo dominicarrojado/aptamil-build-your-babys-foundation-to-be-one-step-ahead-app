@@ -3,7 +3,7 @@ import React from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import Background from '../components/background';
-import ButtonLink from '../components/buttonLink';
+import Button from '../components/button';
 import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
 import PrizeItem from '../components/prizeItem';
@@ -149,7 +149,7 @@ export default function HowToWin() {
         </div>
         <div className={cn('mt-8 text-center', 'sm:mt-12')}>
           <Link href={Route.TEST_YOUR_KNOWLEDGE} passHref>
-            <ButtonLink>Test your knowledge and win!</ButtonLink>
+            <Button as="a">Test your knowledge and win!</Button>
           </Link>
         </div>
       </main>

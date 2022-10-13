@@ -3,7 +3,7 @@ import React from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import Background from '../components/background';
-import ButtonLink from '../components/buttonLink';
+import Button from '../components/button';
 import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
 import ProductItem from '../components/productItem';
@@ -157,7 +157,7 @@ export default function NaturalDefences() {
         </div>
         <div className={cn('mt-6', 'sm:mt-8')}>
           <Link href={Route.HOW_TO_WIN} passHref>
-            <ButtonLink>How to Win?</ButtonLink>
+            <Button as="a">How to Win?</Button>
           </Link>
         </div>
       </main>

@@ -57,7 +57,7 @@ export default function TestYourKnowledge() {
           >
             <img
               src={getAssetUrl(
-                'images/product-aptamil-gold-plus-stage-2-dha-level-md.png'
+                'images/product-aptamil-gold-plus-stage-2-dha-level-sm.png'
               )}
               alt="Aptamil Gold+ Stage 2 DHA level"
               width="379"

@@ -5,4 +5,9 @@ export enum Route {
   HOW_TO_WIN = '/how-to-win',
   TEST_YOUR_KNOWLEDGE = '/test-your-knowledge',
   WIN = '/win',
+  UPLOAD = '/upload',
+}
+
+export enum ExternalUrl {
+  APTAADVANTAGE = 'https://www.aptaadvantage.com.sg/',
 }

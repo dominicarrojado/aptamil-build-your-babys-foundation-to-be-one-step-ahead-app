@@ -27,7 +27,7 @@ export default function Layout({ withMenu = true, children }: Props) {
           }
         )}
       >
-        <div className="w-full">{children}</div>
+        <div className="w-full max-w-7xl mx-auto">{children}</div>
       </div>
     </div>
   );

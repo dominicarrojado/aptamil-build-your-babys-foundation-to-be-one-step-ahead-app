@@ -2,7 +2,7 @@ import cn from 'classnames';
 import Link from 'next/link';
 import { getAssetUrl } from '../lib/assets';
 import Background from '../components/background';
-import ButtonLink from '../components/buttonLink';
+import Button from '../components/button';
 import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
 import { Route } from '../lib/types';
@@ -104,7 +104,7 @@ export default function Home() {
         </div>
         <div className={cn('mt-6 text-center', 'lg:mt-12')}>
           <Link href={Route.NATURAL_DEFENCES} passHref>
-            <ButtonLink>Join Now</ButtonLink>
+            <Button as="a">Join Now</Button>
           </Link>
         </div>
       </main>
