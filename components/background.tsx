@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 
 type Props = {
   src: string;
@@ -7,7 +8,9 @@ type Props = {
 export default function Background({ src }: Props) {
   return (
     <div
-      className="fixed w-full h-full inset-0 bg-cover bg-center bg-no-repeat -z-10 pointer-events-none"
+      className={cn(
+        'absolute w-full h-full inset-0 bg-cover bg-no-repeat -z-10 pointer-events-none'
+      )}
       style={{ backgroundImage: `url(${src})` }}
     />
   );
