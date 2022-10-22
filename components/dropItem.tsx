@@ -1,77 +1,51 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import cn from 'classnames';
 
 type Props = {
-  active: boolean;
+  isDropped: boolean;
   className: string;
-  defaultImageSrc: string;
-  defaultImageAlt: string;
-  defaultImageWidth: string;
-  defaultImageHeight: string;
-  defaultImageClassName: string;
-  activeImageSrc: string;
-  activeImageAlt: string;
-  activeImageWidth: string;
-  activeImageHeight: string;
-  activeImageClassName: string;
-  dropImageSrc: string;
-  dropImageAlt: string;
-  dropImageWidth: string;
-  dropImageHeight: string;
-  dropImageClassName: string;
+  defaultImageProps: React.ImgHTMLAttributes<HTMLImageElement> & {
+    ref: RefObject<HTMLImageElement>;
+  };
+  activeImageProps: React.ImgHTMLAttributes<HTMLImageElement>;
+  dropImageProps: React.ImgHTMLAttributes<HTMLImageElement>;
 };
 
 export default function DropItem({
-  active,
+  isDropped,
   className,
-  defaultImageSrc,
-  defaultImageAlt,
-  defaultImageWidth,
-  defaultImageHeight,
-  defaultImageClassName,
-  activeImageSrc,
-  activeImageAlt,
-  activeImageWidth,
-  activeImageHeight,
-  activeImageClassName,
-  dropImageSrc,
-  dropImageAlt,
-  dropImageWidth,
-  dropImageHeight,
-  dropImageClassName,
+  defaultImageProps,
+  activeImageProps,
+  dropImageProps,
 }: Props) {
   return (
     <div className={cn('absolute', className)}>
       <img
-        src={defaultImageSrc}
-        alt={defaultImageAlt}
-        width={defaultImageWidth}
-        height={defaultImageHeight}
+        {...defaultImageProps}
+        alt={defaultImageProps.alt}
         className={cn(
-          active ? 'opacity-0' : 'opacity-100',
-          defaultImageClassName
+          isDropped ? 'opacity-0' : 'opacity-100',
+          'transition-opacity duration-500',
+          defaultImageProps.className
         )}
         draggable={false}
       />
       <img
-        src={activeImageSrc}
-        alt={activeImageAlt}
-        width={activeImageWidth}
-        height={activeImageHeight}
+        {...activeImageProps}
+        alt={activeImageProps.alt}
         className={cn(
           'absolute inset-0 m-auto',
-          active ? 'opacity-100' : 'opacity-0',
-          activeImageClassName
+          'transition-opacity duration-500',
+          isDropped ? 'opacity-100' : 'opacity-0',
+          activeImageProps.className
         )}
         draggable={false}
       />
-      {active && (
+      {isDropped && (
         <img
-          src={dropImageSrc}
-          alt={dropImageAlt}
-          width={dropImageWidth}
-          height={dropImageHeight}
-          className={cn('absolute inset-0 m-auto', dropImageClassName)}
+          {...dropImageProps}
+          alt={dropImageProps.alt}
+          className={cn('absolute inset-0 m-auto', dropImageProps.className)}
           draggable={false}
         />
       )}

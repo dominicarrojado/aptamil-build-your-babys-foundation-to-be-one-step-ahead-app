@@ -44,6 +44,9 @@ module.exports = {
       animation: {
         expand: 'expand 1.5s infinite ease-in-out both',
       },
+      transitionDuration: {
+        0: '0ms',
+      },
     },
   },
   plugins: [],

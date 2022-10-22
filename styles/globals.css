@@ -5,6 +5,7 @@
 @layer base {
   html {
     @apply overflow-y-scroll;
+    @apply overflow-x-hidden;
   }
 
   body {

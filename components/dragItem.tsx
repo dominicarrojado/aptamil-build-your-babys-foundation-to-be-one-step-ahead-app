@@ -1,25 +1,15 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, RefObject } from 'react';
 import cn from 'classnames';
 
 type Props = {
   title: ReactNode;
   className: string;
-  imageSrc: string;
-  imageAlt: string;
-  imageWidth: string;
-  imageHeight: string;
-  imageClassName: string;
+  imageProps: React.ImgHTMLAttributes<HTMLImageElement> & {
+    ref: RefObject<HTMLImageElement>;
+  };
 };
 
-export default function ActionItem({
-  title,
-  className,
-  imageSrc,
-  imageAlt,
-  imageWidth,
-  imageHeight,
-  imageClassName,
-}: Props) {
+export default function DragItem({ title, className, imageProps }: Props) {
   return (
     <div
       className={cn(
@@ -28,15 +18,14 @@ export default function ActionItem({
       )}
     >
       <img
-        src={imageSrc}
-        alt={imageAlt}
-        width={imageWidth}
-        height={imageHeight}
+        {...imageProps}
+        alt={imageProps.alt}
         className={cn(
           'absolute -left-[20px] -inset-y-0 m-auto cursor-grab',
-          'animate-expand',
+          'transform transition-transform ease-out',
+          'motion-reduce:transition-none',
           'active:cursor-grabbing',
-          imageClassName
+          imageProps.className
         )}
         draggable={false}
       />

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import DropItem from './dropItem';
 import DropLabel from './dropLabel';
 
-export default function DropBrainDevelopment() {
+type Props = {
+  isDropped: boolean;
+  dropElRef: RefObject<HTMLImageElement>;
+};
+
+export default function DropBrainDevelopment({ isDropped, dropElRef }: Props) {
   return (
     <>
       <DropLabel className={cn('top-[15px] right-[10px]', 'sm:right-[45px]')}>
@@ -12,23 +17,30 @@ export default function DropBrainDevelopment() {
         Development
       </DropLabel>
       <DropItem
-        active={false}
+        isDropped={isDropped}
         className={cn('top-[15px] right-[140px]', 'sm:right-[175px]')}
-        defaultImageSrc={getAssetUrl('images/icon-books-outline-dashed.png')}
-        defaultImageAlt="Dashed outline of books icon"
-        defaultImageWidth="80"
-        defaultImageHeight="76"
-        defaultImageClassName="aspect-[80/76]"
-        activeImageSrc={getAssetUrl('images/icon-books-outline-solid.png')}
-        activeImageAlt="Solid outline of books icon"
-        activeImageWidth="80"
-        activeImageHeight="76"
-        activeImageClassName="aspect-[80/76]"
-        dropImageSrc={getAssetUrl('images/icon-books.png')}
-        dropImageAlt="Books icon"
-        dropImageWidth="71"
-        dropImageHeight="67"
-        dropImageClassName="aspect-[71/67]"
+        defaultImageProps={{
+          ref: dropElRef,
+          src: getAssetUrl('images/icon-books-outline-dashed.png'),
+          alt: 'Dashed outline of books icon',
+          width: '80',
+          height: '76',
+          className: 'aspect-[80/76]',
+        }}
+        activeImageProps={{
+          src: getAssetUrl('images/icon-books-outline-solid.png'),
+          alt: 'Solid outline of books icon',
+          width: '80',
+          height: '76',
+          className: 'aspect-[80/76]',
+        }}
+        dropImageProps={{
+          src: getAssetUrl('images/icon-books.png'),
+          alt: 'Books icon',
+          width: '71',
+          height: '67',
+          className: 'aspect-[71/67]',
+        }}
       />
       <img
         src={getAssetUrl('images/arrow-line-downward.png')}

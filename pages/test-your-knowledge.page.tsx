@@ -1,14 +1,32 @@
-import React from 'react';
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
-import ActionItem from '../components/actionItem';
+import { useDragElement } from '../lib/custom-hooks';
 import Background from '../components/background';
+import DragBrainDevelopment from '../components/dragBrainDevelopment';
+import DragNaturalDefences from '../components/dragNaturalDefences';
 import DropBrainDevelopment from '../components/dropBrainDevelopment';
 import DropNaturalDefences from '../components/dropNaturalDefences';
 import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
+import { Route } from '../lib/types';
 
 export default function TestYourKnowledge() {
+  const router = useRouter();
+  const dhaProps = useDragElement();
+  const pbbProps = useDragElement();
+  const dhaIsDropped = dhaProps.isDropped;
+  const pbbIsDropped = pbbProps.isDropped;
+
+  useEffect(() => {
+    if (dhaIsDropped && pbbIsDropped) {
+      router.push(Route.WIN);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dhaIsDropped, pbbIsDropped]);
+
   return (
     <FadeIn>
       <Background src={getAssetUrl('images/bg-space-5.png')} />
@@ -67,35 +85,14 @@ export default function TestYourKnowledge() {
             />
             <div
               className={cn(
-                'flex flex-col items-center justify-center gap-4',
+                'flex flex-col items-center justify-center gap-4 z-10',
                 'sm:flex-row',
                 'md:flex-col md:w-[230px] md:transform md:-translate-x-[100px]',
                 'xl:-translate-x-[70px]'
               )}
             >
-              <ActionItem
-                title="DHA"
-                className="text-[25px]"
-                imageSrc={getAssetUrl('images/icon-books.png')}
-                imageAlt="Books icon"
-                imageWidth="71"
-                imageHeight="67"
-                imageClassName="aspect-[71/67]"
-              />
-              <ActionItem
-                title={
-                  <>
-                    Patented <br />
-                    Prebiotic Blend
-                  </>
-                }
-                className="text-[16px]"
-                imageSrc={getAssetUrl('images/icon-shield.png')}
-                imageAlt="Shield icon"
-                imageWidth="60"
-                imageHeight="75"
-                imageClassName="aspect-[60/75]"
-              />
+              <DragBrainDevelopment {...dhaProps} />
+              <DragNaturalDefences {...pbbProps} />
             </div>
           </div>
           <div className={cn('flex flex-col items-center mt-6', 'md:mt-0')}>
@@ -108,8 +105,14 @@ export default function TestYourKnowledge() {
                 className="aspect-[379/365]"
                 draggable={false}
               />
-              <DropBrainDevelopment />
-              <DropNaturalDefences />
+              <DropBrainDevelopment
+                isDropped={dhaIsDropped}
+                dropElRef={dhaProps.dropElRef}
+              />
+              <DropNaturalDefences
+                isDropped={pbbIsDropped}
+                dropElRef={pbbProps.dropElRef}
+              />
             </div>
           </div>
         </div>
