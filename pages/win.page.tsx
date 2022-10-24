@@ -11,6 +11,7 @@ import InputCheck from '../components/inputCheck';
 import InputLabel from '../components/inputLabel';
 import InputLegend from '../components/inputLegend';
 import InputRadio from '../components/inputRadio';
+import InputDate from '../components/inputDate';
 
 export default function Win() {
   const formOnSubmit = (e: React.FormEvent) => {
@@ -49,18 +50,24 @@ export default function Win() {
         <form className="flex flex-col gap-4 mt-6" onSubmit={formOnSubmit}>
           <div className={cn('flex flex-col gap-4', 'sm:flex-row sm:gap-6')}>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="first-name">First Name</InputLabel>
+              <InputLabel htmlFor="first-name">
+                First Name <sup>*</sup>
+              </InputLabel>
               <InputBox id="first-name" type="text" autoComplete="given-name" />
             </div>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="last-name">Last Name</InputLabel>
+              <InputLabel htmlFor="last-name">
+                Last Name <sup>*</sup>
+              </InputLabel>
               <InputBox id="last-name" type="text" autoComplete="family-name" />
             </div>
           </div>
 
           <div className={cn('flex flex-col gap-4', 'sm:flex-row sm:gap-6')}>
             <div className={cn('sm:w-2/3')}>
-              <InputLabel htmlFor="address">Address</InputLabel>
+              <InputLabel htmlFor="address">
+                Address <sup>*</sup>
+              </InputLabel>
               <InputBox
                 id="address"
                 type="text"
@@ -68,18 +75,24 @@ export default function Win() {
               />
             </div>
             <div className={cn('sm:w-1/3')}>
-              <InputLabel htmlFor="zip-code">ZIP Code</InputLabel>
+              <InputLabel htmlFor="zip-code">
+                ZIP Code <sup>*</sup>
+              </InputLabel>
               <InputBox id="zip-code" type="text" autoComplete="postal-code" />
             </div>
           </div>
 
           <div className={cn('flex flex-col gap-4', 'sm:flex-row sm:gap-6')}>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="mobile-number">Mobile Number</InputLabel>
+              <InputLabel htmlFor="mobile-number">
+                Mobile Number <sup>*</sup>
+              </InputLabel>
               <InputBox id="mobile-number" type="tel" />
             </div>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="email">Email Address</InputLabel>
+              <InputLabel htmlFor="email">
+                Email Address <sup>*</sup>
+              </InputLabel>
               <InputBox id="email" type="email" />
             </div>
           </div>
@@ -93,7 +106,7 @@ export default function Win() {
               <InputLabel htmlFor="child-birth-date">
                 Child&apos;s Date of Birth
               </InputLabel>
-              <InputBox id="child-birth-date" type="date" />
+              <InputDate value={null} onChange={() => {}} />
             </div>
           </div>
 
@@ -102,7 +115,7 @@ export default function Win() {
               <InputLabel htmlFor="estimated-due-date">
                 For Pregnant Mums - Estimated Due Date (optional)
               </InputLabel>
-              <InputBox id="estimated-due-date" type="date" />
+              <InputDate value={null} onChange={() => {}} />
             </div>
             <div className={cn('hidden', 'sm:block sm:w-1/2')}></div>
           </div>
