@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 import React from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
+import { getMetaTitle, getRouteCanonical } from '../lib/meta';
 import Background from '../components/background';
 import Button from '../components/button';
 import FadeIn from '../components/fadeIn';
@@ -12,8 +14,19 @@ import StepItem from '../components/stepItem';
 import { Route } from '../lib/types';
 
 export default function HowToWin() {
+  const metaUrl = getRouteCanonical(Route.WIN);
+  const metaTitle = getMetaTitle('How to Win');
+  const metaDesc =
+    'Answer the question on DHA & Patented Prebiotic Blend correctly. Share with your friends or purchase Aptamil7 products to increase your chances of winning.';
+
   return (
     <FadeIn>
+      <NextSeo
+        canonical={metaUrl}
+        title={metaTitle}
+        description={metaDesc}
+        openGraph={{ url: metaUrl }}
+      />
       <Background src={getAssetUrl('images/bg-space-4.png')} />
       <main
         className={cn(

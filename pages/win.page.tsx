@@ -1,6 +1,7 @@
+import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 import cn from 'classnames';
 import React, { useContext, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { getAssetUrl } from '../lib/assets';
 import Alert from '../components/alert';
 import Background from '../components/background';
@@ -69,6 +70,7 @@ export default function Win() {
 
   return (
     <FadeIn>
+      <NextSeo noindex={true} />
       <Background src={getAssetUrl('images/bg-space-6.png')} />
       <main
         className={cn(

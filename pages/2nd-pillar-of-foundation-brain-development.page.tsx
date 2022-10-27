@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 import React from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
+import { getMetaTitle, getRouteCanonical } from '../lib/meta';
 import Background from '../components/background';
 import Button from '../components/button';
 import FadeIn from '../components/fadeIn';
@@ -11,8 +13,21 @@ import StageItem from '../components/stageItem';
 import { Route } from '../lib/types';
 
 export default function NaturalDefences() {
+  const metaUrl = getRouteCanonical(Route.BRAIN_DEVELOPMENT);
+  const metaTitle = getMetaTitle(
+    '2nd Pillar of Foundation - Brain Development'
+  );
+  const metaDesc =
+    'Closest to helping your baby meet the World Health Organization (WHO) daily recommended DHA intake';
+
   return (
     <FadeIn>
+      <NextSeo
+        canonical={metaUrl}
+        title={metaTitle}
+        description={metaDesc}
+        openGraph={{ url: metaUrl }}
+      />
       <Background src={getAssetUrl('images/bg-space-3.png')} />
       <main className="px-[20px] text-center">
         <img

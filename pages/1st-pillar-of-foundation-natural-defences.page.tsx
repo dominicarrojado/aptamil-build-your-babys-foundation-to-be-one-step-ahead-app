@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 import React from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
+import { getMetaTitle, getRouteCanonical } from '../lib/meta';
 import Background from '../components/background';
 import Button from '../components/button';
 import FadeIn from '../components/fadeIn';
@@ -9,8 +11,19 @@ import Footer from '../components/footer';
 import { Route } from '../lib/types';
 
 export default function NaturalDefences() {
+  const metaUrl = getRouteCanonical(Route.NATURAL_DEFENCES);
+  const metaTitle = getMetaTitle('1st Pillar of Foundation - Natural Defences');
+  const metaDesc =
+    "The only proven Patented Prebiotic Blend supporting your child's natural defences";
+
   return (
     <FadeIn>
+      <NextSeo
+        canonical={metaUrl}
+        title={metaTitle}
+        description={metaDesc}
+        openGraph={{ url: metaUrl }}
+      />
       <Background src={getAssetUrl('images/bg-space-2.png')} />
       <main className="px-[20px] text-center">
         <img

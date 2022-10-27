@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 import React, { useContext, useEffect } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
@@ -36,6 +37,7 @@ export default function Upload() {
 
   return (
     <FadeIn>
+      <NextSeo noindex={true} />
       <Background src={getAssetUrl('images/bg-space-7.png')} />
       <main
         className={cn(

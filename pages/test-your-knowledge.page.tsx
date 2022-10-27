@@ -1,8 +1,10 @@
 import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 import React, { useContext, useEffect } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import { useDragElement } from '../lib/custom-hooks';
+import { getMetaTitle, getRouteCanonical } from '../lib/meta';
 import Background from '../components/background';
 import DragBrainDevelopment from '../components/dragBrainDevelopment';
 import DragNaturalDefences from '../components/dragNaturalDefences';
@@ -16,6 +18,10 @@ import { StoreContext } from '../lib/store';
 export default function TestYourKnowledge() {
   const router = useRouter();
   const context = useContext(StoreContext);
+  const metaUrl = getRouteCanonical(Route.TEST_YOUR_KNOWLEDGE);
+  const metaTitle = getMetaTitle('Test your knowledge and Win!');
+  const metaDesc =
+    "Build your baby's foundations by unlocking the nutrients needed for Brain Development and Natural Defences. Drag and drop the nutrients to the corresponding pillar of foundation.";
   const dhaProps = useDragElement();
   const pbbProps = useDragElement();
   const dhaIsDropped = dhaProps.isDropped;
@@ -32,6 +38,12 @@ export default function TestYourKnowledge() {
 
   return (
     <FadeIn>
+      <NextSeo
+        canonical={metaUrl}
+        title={metaTitle}
+        description={metaDesc}
+        openGraph={{ url: metaUrl }}
+      />
       <Background src={getAssetUrl('images/bg-space-5.png')} />
       <main
         className={cn(
@@ -44,7 +56,7 @@ export default function TestYourKnowledge() {
         <h1 className="md:-mt-[60px] md:px-[10px]">
           <img
             src={getAssetUrl('images/banner-test-your-knowledge-and-win.png')}
-            alt="Test your knowledge and win"
+            alt="Test your knowledge and Win!"
             width="674"
             height="131"
             className="mx-auto aspect-[674/131]"
