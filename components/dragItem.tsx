@@ -21,7 +21,7 @@ export default function DragItem({ title, className, imageProps }: Props) {
         {...imageProps}
         alt={imageProps.alt}
         className={cn(
-          'absolute -left-[20px] -inset-y-0 m-auto cursor-grab',
+          'absolute -left-[20px] -inset-y-0 m-auto cursor-grab touch-none',
           'transform transition-transform ease-out',
           'motion-reduce:transition-none',
           'active:cursor-grabbing',

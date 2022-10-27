@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { checkElementsColliding, getTouchEventData } from './dom';
-import { getRefValue, useStateRef } from './hooks';
+import { getRefValue } from './hooks';
 
 export function useDragElement() {
   const dragElRef = useRef<HTMLImageElement>(null);
@@ -10,8 +10,8 @@ export function useDragElement() {
   const startXRef = useRef(0);
   const startYRef = useRef(0);
   const timeoutRef = useRef(0);
-  const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
-  const [offsetY, setOffsetY, offsetYRef] = useStateRef(0);
+  const [offsetX, setOffsetX] = useState(0);
+  const [offsetY, setOffsetY] = useState(0);
   const [isSwiping, setIsSwiping] = useState(false);
   const [isAnimating, setIsAnimating] = useState(true);
   const [isDropped, setIsDropped] = useState(false);
