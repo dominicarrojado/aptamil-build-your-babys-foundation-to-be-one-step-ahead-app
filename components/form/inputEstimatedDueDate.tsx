@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useMemo } from 'react';
 import InputDate from '../inputDate';
 import InputLabel from '../inputLabel';
 import { InputId } from '../../lib/types';
+import { StoreContext } from '../../lib/store';
 
 export default function InputEstimatedDueDate() {
-  const [date, setDate] = useState<Date | null>(null);
+  const context = useContext(StoreContext);
+  const minDate = useMemo(() => new Date(), []);
+  const onChange = (date: Date | null) => {
+    context.setContestForm((value) => ({
+      ...value,
+      estimatedDueDate: date,
+    }));
+  };
 
   return (
     <>
@@ -13,8 +21,9 @@ export default function InputEstimatedDueDate() {
       </InputLabel>
       <InputDate
         id={InputId.ESTIMATED_DUE_DATE}
-        value={date}
-        onChange={setDate}
+        minDate={minDate}
+        value={context.contestForm.estimatedDueDate}
+        onChange={onChange}
       />
     </>
   );

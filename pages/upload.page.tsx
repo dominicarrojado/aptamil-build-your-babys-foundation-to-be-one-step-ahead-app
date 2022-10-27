@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import React, { useContext, useEffect } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import Background from '../components/background';
@@ -7,12 +8,14 @@ import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
 import Button from '../components/button';
 import { ExternalUrl, Route } from '../lib/types';
+import { StoreContext } from '../lib/store';
 import { MAIN_URL } from '../lib/constants';
 
 export default function Upload() {
-  const [shared, setShared] = useState(false);
-  const [uploaded, setUploaded] = useState(false);
-  const shareOnClick = () => setShared(true);
+  const router = useRouter();
+  const context = useContext(StoreContext);
+  const { formCompleted } = context;
+  const shareOnClick = () => context.setUserShared(true);
   const fileOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target as HTMLInputElement;
 
@@ -20,8 +23,16 @@ export default function Upload() {
       return;
     }
 
-    setUploaded(true);
+    context.setUserUploaded(true);
   };
+
+  useEffect(() => {
+    if (!formCompleted) {
+      router.replace(Route.HOME);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formCompleted]);
 
   return (
     <FadeIn>
@@ -72,7 +83,7 @@ export default function Upload() {
               className="w-full"
               iconTitle="+5"
               iconSubtitle="chances"
-              disabled={shared}
+              disabled={context.userShared}
               onClick={shareOnClick}
               isExternal
             >
@@ -92,7 +103,7 @@ export default function Upload() {
               iconSubtitle="chances"
               iconPosition="left"
               htmlFor="file-upload"
-              disabled={uploaded}
+              disabled={context.userUploaded}
             >
               <img
                 src={getAssetUrl('images/icon-receipt.png')}
@@ -131,7 +142,8 @@ export default function Upload() {
                 <a
                   className={cn(
                     'inline-block mt-6 text-sky-450 font-light',
-                    'hover:underline'
+                    'hover:underline',
+                    'sm:text-[18px]'
                   )}
                 >
                   Back to Homepage

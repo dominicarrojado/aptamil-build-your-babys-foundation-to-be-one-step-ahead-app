@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { replaceDoubleSpaces } from '../../lib/string';
 import InputBox from '../inputBox';
 import InputLabel from '../inputLabel';
-import { InputId } from '../../lib/types';
+import { ErrorMessage, InputId } from '../../lib/types';
+import { StoreContext } from '../../lib/store';
 
 export default function InputFamilyName() {
+  const context = useContext(StoreContext);
   const [hasError, setHasError] = useState(false);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    context.setFormError((value) =>
+      value === ErrorMessage.FORM_INCOMPLETE ? '' : value
+    );
+    context.setContestForm((value) => ({
+      ...value,
+      familyName: e.target.value.trimStart(),
+    }));
+  };
   const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    context.setContestForm((value) => ({
+      ...value,
+      familyName: replaceDoubleSpaces(e.target.value),
+    }));
+
     const inputEl = e.target as HTMLInputElement;
 
     setHasError(!inputEl.checkValidity());
@@ -20,7 +37,9 @@ export default function InputFamilyName() {
         id={InputId.FAMILY_NAME}
         type="text"
         autoComplete="family-name"
+        value={context.contestForm.familyName}
         hasError={hasError}
+        onChange={onChange}
         onBlur={onBlur}
         required
       />

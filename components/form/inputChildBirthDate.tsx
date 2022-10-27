@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useMemo } from 'react';
 import InputDate from '../inputDate';
 import InputLabel from '../inputLabel';
 import { InputId } from '../../lib/types';
+import { StoreContext } from '../../lib/store';
 
 export default function InputChildBirthDate() {
-  const [date, setDate] = useState<Date | null>(null);
+  const context = useContext(StoreContext);
+  const maxDate = useMemo(() => new Date(), []);
+  const onChange = (date: Date | null) => {
+    context.setContestForm((value) => ({
+      ...value,
+      childBirthDate: date,
+    }));
+  };
 
   return (
     <>
@@ -13,8 +21,9 @@ export default function InputChildBirthDate() {
       </InputLabel>
       <InputDate
         id={InputId.CHILD_BIRTH_DATE}
-        value={date}
-        onChange={setDate}
+        maxDate={maxDate}
+        value={context.contestForm.childBirthDate}
+        onChange={onChange}
       />
     </>
   );

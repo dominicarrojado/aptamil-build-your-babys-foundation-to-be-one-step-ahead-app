@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import { useDragElement } from '../lib/custom-hooks';
@@ -11,9 +11,11 @@ import DropNaturalDefences from '../components/dropNaturalDefences';
 import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
 import { Route } from '../lib/types';
+import { StoreContext } from '../lib/store';
 
 export default function TestYourKnowledge() {
   const router = useRouter();
+  const context = useContext(StoreContext);
   const dhaProps = useDragElement();
   const pbbProps = useDragElement();
   const dhaIsDropped = dhaProps.isDropped;
@@ -21,6 +23,7 @@ export default function TestYourKnowledge() {
 
   useEffect(() => {
     if (dhaIsDropped && pbbIsDropped) {
+      context.setTestCompleted(true);
       router.push(Route.WIN);
     }
 

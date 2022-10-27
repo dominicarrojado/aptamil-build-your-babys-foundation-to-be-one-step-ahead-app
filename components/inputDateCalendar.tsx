@@ -11,23 +11,19 @@ export default function InputDateCalendar({
         className={cn(
           'text-[16px]',
 
-          // navigation-icon
-          '[&>button>span]:text-[8px]',
+          '[&__[class*="navigation-icon"]]:text-[8px]',
 
-          // current-month
-          '[&>div:nth-child(3)>div:first-child>div:first-child]:text-[18px]',
+          '[&__[class*="current-month"]]:text-[18px]',
 
-          // day-names
-          '[&>div:nth-child(3)>div:first-child>div:nth-child(3)]:mt-[8px]',
-          '[&>div:nth-child(3)>div:first-child>div:nth-child(3)]:font-bold',
+          '[&__[class*="day-names"]]:mt-[8px]',
+          '[&__[class*="day-names"]]:font-bold',
 
-          // day-name
-          '[&>div:nth-child(3)>div:first-child>div:nth-child(3)>div]:w-[32px]',
+          '[&__[class$="day-name"]]:w-[32px]',
 
           // day
-          '[&>div:nth-child(3)>div:nth-child(2)>div>div]:w-[32px]',
-          '[&>div:nth-child(3)>div:nth-child(2)>div>div]:h-[32px]',
-          '[&>div:nth-child(3)>div:nth-child(2)>div>div]:leading-[32px]',
+          '[&__[class$="month"]>div>div]:w-[32px]',
+          '[&__[class$="month"]>div>div]:h-[32px]',
+          '[&__[class$="month"]>div>div]:leading-[32px]',
 
           // day__outside-month
           `[&__[class*="outside-month"]]:text-gray-400`,

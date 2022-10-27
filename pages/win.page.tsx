@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React, { useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { getAssetUrl } from '../lib/assets';
 import Alert from '../components/alert';
@@ -19,15 +19,16 @@ import InputEstimatedDueDate from '../components/form/inputEstimatedDueDate';
 import InputSource from '../components/form/inputSource';
 import InputConsent from '../components/form/inputConsent';
 import { ErrorMessage, InputId, Route } from '../lib/types';
+import { StoreContext } from '../lib/store';
 
 export default function Win() {
   const router = useRouter();
-  const [error, setError] = useState('');
-  const [isFormTouched, setIsFormTouched] = useState(false);
+  const context = useContext(StoreContext);
+  const { testCompleted, formError } = context;
   const formOnSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    setIsFormTouched(true);
+    context.setFormTouched(true);
 
     const formEl = e.target as HTMLFormElement;
     const givenName = formEl[InputId.GIVEN_NAME];
@@ -45,17 +46,26 @@ export default function Win() {
       !mobileNumber.checkValidity() ||
       !email.checkValidity()
     ) {
-      return setError(ErrorMessage.FORM_INCOMPLETE);
+      return context.setFormError(ErrorMessage.FORM_INCOMPLETE);
     }
 
     const consent = formEl[InputId.CONSENT] as HTMLInputElement;
 
     if (!consent.checked) {
-      return setError(ErrorMessage.FORM_CONSENT_UNCHECKED);
+      return context.setFormError(ErrorMessage.FORM_CONSENT_UNCHECKED);
     }
 
+    context.setFormCompleted(true);
     router.push(Route.UPLOAD);
   };
+
+  useEffect(() => {
+    if (!testCompleted) {
+      router.replace(Route.HOME);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [testCompleted]);
 
   return (
     <FadeIn>
@@ -132,7 +142,7 @@ export default function Win() {
           <InputSource />
 
           <div className="mt-4">
-            <InputConsent isFormTouched={isFormTouched} />
+            <InputConsent />
           </div>
 
           <div className="mt-4 text-[18px] font-thin">
@@ -140,9 +150,9 @@ export default function Win() {
             our server. This form is only shown for demonstration purposes only.
           </div>
 
-          {error && (
+          {formError && (
             <div className="mt-4 text-center">
-              <Alert>{error}</Alert>
+              <Alert>{formError}</Alert>
             </div>
           )}
 

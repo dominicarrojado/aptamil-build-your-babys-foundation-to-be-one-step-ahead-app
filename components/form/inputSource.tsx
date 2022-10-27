@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import cn from 'classnames';
 import InputLegend from '../inputLegend';
 import InputRadio from '../inputRadio';
 import { InputId, Source } from '../../lib/types';
 import { SOURCES } from '../../lib/constants';
+import { StoreContext } from '../../lib/store';
 
 export default function InputSource() {
-  const [value, setValue] = useState(Source.FAIRPRICE);
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setValue(e.target.value as Source);
+  const context = useContext(StoreContext);
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    context.setContestForm((value) => ({
+      ...value,
+      source: e.target.value as Source,
+    }));
+  };
 
   return (
     <fieldset>
@@ -26,7 +31,7 @@ export default function InputSource() {
             name={InputId.SOURCE}
             value={source}
             label={source}
-            checked={value === source}
+            checked={context.contestForm.source === source}
             onChange={onChange}
           />
         ))}

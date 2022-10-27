@@ -50,7 +50,8 @@ export default function InputDate({
               'ml-auto outline-none text-blue-950',
               'transition-opacity',
               'hover:opacity-70',
-              'active:opacity-40'
+              'active:opacity-40',
+              'focus-visible:ring-[3px] focus-visible:ring-sky-450'
             )}
             onClick={onClear}
           >

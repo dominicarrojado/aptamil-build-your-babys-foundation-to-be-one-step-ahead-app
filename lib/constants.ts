@@ -1,5 +1,5 @@
 import { getAssetUrl } from './assets';
-import { Route, Source } from './types';
+import { Route, Source, StoreContextType } from './types';
 
 export const SITE_NAME = 'Dominic Arrojado';
 export const PROJECT_TITLE =
@@ -84,3 +84,29 @@ export const BACKGROUND_IMAGES = [
 ];
 
 export const SOURCES = Object.values(Source);
+
+export const CONTEST_FORM_DEFAULT_VALUES = {
+  givenName: '',
+  familyName: '',
+  address: '',
+  postalCode: '',
+  mobileNumber: '',
+  email: '',
+  childName: '',
+  childBirthDate: null,
+  estimatedDueDate: null,
+  source: undefined,
+  consent: false,
+};
+export const STORE_CONTEXT_DEFAULT_VALUES = {
+  testCompleted: false,
+  contestForm: CONTEST_FORM_DEFAULT_VALUES,
+  formTouched: false,
+  formCompleted: false,
+  formError: '',
+  userShared: false,
+  userUploaded: false,
+} as StoreContextType;
+
+export const RE_NON_DIGIT = new RegExp(/\D/, 'g');
+export const RE_SPACES = new RegExp(/\s\s+/, 'g');

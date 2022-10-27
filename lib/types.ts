@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export enum Route {
   HOME = '/',
   NATURAL_DEFENCES = '/1st-pillar-of-foundation-natural-defences',
@@ -43,3 +45,34 @@ export enum ErrorMessage {
 export enum ExternalUrl {
   SHARER_FACEBOOK = 'https://www.facebook.com/sharer',
 }
+
+export type ContestForm = {
+  givenName: string;
+  familyName: string;
+  address: string;
+  postalCode: string;
+  mobileNumber: string;
+  email: string;
+  childName: string;
+  childBirthDate: Date | null;
+  estimatedDueDate: Date | null;
+  source?: Source;
+  consent: boolean;
+};
+
+export type StoreContextType = {
+  testCompleted: boolean;
+  contestForm: ContestForm;
+  formTouched: boolean;
+  formCompleted: boolean;
+  formError: string;
+  userShared: boolean;
+  userUploaded: boolean;
+  setTestCompleted: Dispatch<SetStateAction<boolean>>;
+  setContestForm: Dispatch<SetStateAction<ContestForm>>;
+  setFormTouched: Dispatch<SetStateAction<boolean>>;
+  setFormCompleted: Dispatch<SetStateAction<boolean>>;
+  setFormError: Dispatch<SetStateAction<string>>;
+  setUserShared: Dispatch<SetStateAction<boolean>>;
+  setUserUploaded: Dispatch<SetStateAction<boolean>>;
+};
