@@ -46,6 +46,18 @@ export enum ExternalUrl {
   SHARER_FACEBOOK = 'https://www.facebook.com/sharer',
 }
 
+export enum GoogleAnalyticsEvent {
+  CONTEST_START = 'contest_start',
+  CONTEST_WIN = 'contest_win',
+  CONTEST_SHARE = 'contest_share',
+  CONTEST_FORM_SUBMIT = 'contest_form_submit',
+  CONTEST_RECEIPT_UPLOAD = 'contest_receipt_upload',
+}
+
+export enum SocialName {
+  FACEBOOK = 'facebook',
+}
+
 export type ContestForm = {
   givenName: string;
   familyName: string;
@@ -75,4 +87,25 @@ export type StoreContextType = {
   setFormError: Dispatch<SetStateAction<string>>;
   setUserShared: Dispatch<SetStateAction<boolean>>;
   setUserUploaded: Dispatch<SetStateAction<boolean>>;
+};
+
+export type EventContestStart = {
+  event: GoogleAnalyticsEvent.CONTEST_START;
+};
+
+export type EventContestWin = {
+  event: GoogleAnalyticsEvent.CONTEST_WIN;
+};
+
+export type EventContestShare = {
+  event: GoogleAnalyticsEvent.CONTEST_SHARE;
+  socialName: SocialName;
+};
+
+export type EventContestFormSubmit = {
+  event: GoogleAnalyticsEvent.CONTEST_FORM_SUBMIT;
+};
+
+export type EventContestReceiptUpload = {
+  event: GoogleAnalyticsEvent.CONTEST_RECEIPT_UPLOAD;
 };

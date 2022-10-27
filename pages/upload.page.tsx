@@ -4,11 +4,17 @@ import { NextSeo } from 'next-seo';
 import React, { useContext, useEffect } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
+import { trackEvent } from '../lib/google-analytics';
 import Background from '../components/background';
 import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
 import Button from '../components/button';
-import { ExternalUrl, Route } from '../lib/types';
+import {
+  ExternalUrl,
+  GoogleAnalyticsEvent,
+  Route,
+  SocialName,
+} from '../lib/types';
 import { StoreContext } from '../lib/store';
 import { MAIN_URL } from '../lib/constants';
 
@@ -16,7 +22,14 @@ export default function Upload() {
   const router = useRouter();
   const context = useContext(StoreContext);
   const { formCompleted } = context;
-  const shareOnClick = () => context.setUserShared(true);
+  const shareOnClick = () => {
+    context.setUserShared(true);
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.CONTEST_SHARE,
+      socialName: SocialName.FACEBOOK,
+    });
+  };
   const fileOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target as HTMLInputElement;
 
@@ -25,6 +38,10 @@ export default function Upload() {
     }
 
     context.setUserUploaded(true);
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.CONTEST_RECEIPT_UPLOAD,
+    });
   };
 
   useEffect(() => {

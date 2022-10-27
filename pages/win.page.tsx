@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo';
 import cn from 'classnames';
 import React, { useContext, useEffect } from 'react';
 import { getAssetUrl } from '../lib/assets';
+import { trackEvent } from '../lib/google-analytics';
 import Alert from '../components/alert';
 import Background from '../components/background';
 import Button from '../components/button';
@@ -19,7 +20,12 @@ import InputChildBirthDate from '../components/form/inputChildBirthDate';
 import InputEstimatedDueDate from '../components/form/inputEstimatedDueDate';
 import InputSource from '../components/form/inputSource';
 import InputConsent from '../components/form/inputConsent';
-import { ErrorMessage, InputId, Route } from '../lib/types';
+import {
+  ErrorMessage,
+  GoogleAnalyticsEvent,
+  InputId,
+  Route,
+} from '../lib/types';
 import { StoreContext } from '../lib/store';
 
 export default function Win() {
@@ -57,6 +63,9 @@ export default function Win() {
     }
 
     context.setFormCompleted(true);
+
+    trackEvent({ event: GoogleAnalyticsEvent.CONTEST_FORM_SUBMIT });
+
     router.push(Route.UPLOAD);
   };
 

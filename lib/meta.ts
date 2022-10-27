@@ -1,5 +1,5 @@
 import { Route } from './types';
-import { MAIN_ORIGIN, MAIN_TITLE, MAIN_URL } from './constants';
+import { MAIN_TITLE, MAIN_URL } from './constants';
 
 export function getMetaTitle(title: string) {
   return `${title} | ${MAIN_TITLE}`;

@@ -5,6 +5,7 @@ import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import { useDragElement } from '../lib/custom-hooks';
 import { getMetaTitle, getRouteCanonical } from '../lib/meta';
+import { trackEvent } from '../lib/google-analytics';
 import Background from '../components/background';
 import DragBrainDevelopment from '../components/dragBrainDevelopment';
 import DragNaturalDefences from '../components/dragNaturalDefences';
@@ -12,7 +13,7 @@ import DropBrainDevelopment from '../components/dropBrainDevelopment';
 import DropNaturalDefences from '../components/dropNaturalDefences';
 import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
-import { Route } from '../lib/types';
+import { GoogleAnalyticsEvent, Route } from '../lib/types';
 import { StoreContext } from '../lib/store';
 
 export default function TestYourKnowledge() {
@@ -30,7 +31,12 @@ export default function TestYourKnowledge() {
   useEffect(() => {
     if (dhaIsDropped && pbbIsDropped) {
       context.setTestCompleted(true);
+
+      trackEvent({ event: GoogleAnalyticsEvent.CONTEST_WIN });
+
       router.push(Route.WIN);
+    } else if (dhaIsDropped || pbbIsDropped) {
+      trackEvent({ event: GoogleAnalyticsEvent.CONTEST_START });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
