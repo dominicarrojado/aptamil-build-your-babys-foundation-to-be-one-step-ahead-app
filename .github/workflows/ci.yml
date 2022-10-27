@@ -2,7 +2,7 @@ name: CI/CD
 
 on:
   push:
-    branches: [main]
+    branches: [develop]
 
 permissions:
   contents: write
@@ -61,3 +61,11 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: out
+
+      - name: Merge gh-pages -> main
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: gh-pages
+          target_branch: main
+          github_token: ${{ github.token }}
