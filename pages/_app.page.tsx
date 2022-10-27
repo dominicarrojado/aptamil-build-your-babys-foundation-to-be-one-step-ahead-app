@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { useState } from 'react';
 import SeoTags from '../components/seoTags';
 import FontFaces from '../components/fontFaces';
+import TagManager from '../components/tagManager';
 import Layout from '../components/layout';
 import { ContestForm } from '../lib/types';
 import { StoreContext } from '../lib/store';
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <SeoTags />
       <FontFaces />
+      <TagManager />
       <StoreContext.Provider
         value={{
           testCompleted,
