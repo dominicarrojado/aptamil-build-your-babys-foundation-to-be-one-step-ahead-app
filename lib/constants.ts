@@ -1,5 +1,5 @@
 import { getAssetUrl } from './assets';
-import { Route } from './types';
+import { Route, Source } from './types';
 
 export const SITE_NAME = 'Dominic Arrojado';
 export const PROJECT_TITLE =
@@ -82,3 +82,5 @@ export const BACKGROUND_IMAGES = [
     src: getAssetUrl('images/bg-space-7.png'),
   },
 ];
+
+export const SOURCES = Object.values(Source);

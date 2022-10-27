@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer
       className={cn(
-        'py-[30px] px-[20px] text-sky-450 font-light text-center',
+        'py-[30px] px-[20px] text-sky-450 font-light text-center select-none',
         'xl:text-right'
       )}
     >

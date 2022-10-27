@@ -26,6 +26,7 @@ const Button = forwardRef(
       isExternal,
       target,
       rel,
+      disabled,
       ...props
     }: Props,
     ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement | HTMLLabelElement>
@@ -36,7 +37,7 @@ const Button = forwardRef(
       className: cn(
         'group relative inline-block rounded-full bg-sky-450 py-[20px] font-kghappy text-[14px] text-white text-center font-bold uppercase select-none',
         'transition hover:bg-sky-750 active:bg-sky-775',
-        'sm:text-[16px]',
+        'sm:text-[16px] ',
         className,
         {
           'px-[45px]': !withIcon,
@@ -44,6 +45,7 @@ const Button = forwardRef(
             withIcon && iconPosition === 'right',
           'pr-[20px] pl-[100px] sm:pr-[50px]':
             withIcon && iconPosition === 'left',
+          'opacity-40 pointer-events-none': disabled,
         }
       ),
     };

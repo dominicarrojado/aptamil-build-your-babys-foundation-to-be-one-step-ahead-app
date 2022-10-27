@@ -11,3 +11,35 @@ export enum Route {
 export enum ExternalUrl {
   APTAADVANTAGE = 'https://www.aptaadvantage.com.sg/',
 }
+
+export enum InputId {
+  GIVEN_NAME = 'given-name',
+  FAMILY_NAME = 'family-name',
+  ADDRESS = 'address',
+  POSTAL_CODE = 'postal-code',
+  MOBILE_NUMBER = 'mobile-number',
+  EMAIL = 'email',
+  CHILD_NAME = 'child-name',
+  CHILD_BIRTH_DATE = 'child-birth-date',
+  ESTIMATED_DUE_DATE = 'estimated-due-date',
+  SOURCE = 'source',
+  CONSENT = 'consent',
+}
+
+export enum Source {
+  FAIRPRICE = 'FairPrice',
+  DOCTOR = 'Doctor / Paediatrician',
+  NEWSPAPER = 'Newspaper',
+  SOCIAL_MEDIA = 'Facebook / Instagram',
+  ONLINE_BANNERS = 'Online Banners',
+  OTHERS = 'Others',
+}
+
+export enum ErrorMessage {
+  FORM_INCOMPLETE = 'Some fields are empty or contain an improper value.',
+  FORM_CONSENT_UNCHECKED = 'You must consent to before you can proceed.',
+}
+
+export enum ExternalUrl {
+  SHARER_FACEBOOK = 'https://www.facebook.com/sharer',
+}

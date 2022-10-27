@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import { getAssetUrl } from '../lib/assets';
 import Background from '../components/background';
@@ -7,8 +7,22 @@ import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
 import Button from '../components/button';
 import { ExternalUrl, Route } from '../lib/types';
+import { MAIN_URL } from '../lib/constants';
 
 export default function Upload() {
+  const [shared, setShared] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
+  const shareOnClick = () => setShared(true);
+  const fileOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { files } = e.target as HTMLInputElement;
+
+    if (!files || files.length === 0) {
+      return;
+    }
+
+    setUploaded(true);
+  };
+
   return (
     <FadeIn>
       <Background src={getAssetUrl('images/bg-space-7.png')} />
@@ -52,9 +66,15 @@ export default function Upload() {
           >
             <Button
               as="a"
+              href={`${ExternalUrl.SHARER_FACEBOOK}?u=${encodeURIComponent(
+                MAIN_URL
+              )}`}
               className="w-full"
               iconTitle="+5"
               iconSubtitle="chances"
+              disabled={shared}
+              onClick={shareOnClick}
+              isExternal
             >
               <img
                 src={getAssetUrl('images/icon-share.png')}
@@ -72,6 +92,7 @@ export default function Upload() {
               iconSubtitle="chances"
               iconPosition="left"
               htmlFor="file-upload"
+              disabled={uploaded}
             >
               <img
                 src={getAssetUrl('images/icon-receipt.png')}
@@ -88,6 +109,7 @@ export default function Upload() {
               type="file"
               className="sr-only"
               accept="image/jpeg, image/png"
+              onChange={fileOnChange}
             />
             <div className="text-center">
               <Button

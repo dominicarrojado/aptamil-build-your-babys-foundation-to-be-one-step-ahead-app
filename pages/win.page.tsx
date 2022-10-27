@@ -1,21 +1,60 @@
 import cn from 'classnames';
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { getAssetUrl } from '../lib/assets';
 import Alert from '../components/alert';
 import Background from '../components/background';
 import Button from '../components/button';
 import FadeIn from '../components/fadeIn';
 import Footer from '../components/footer';
-import InputBox from '../components/inputBox';
-import InputCheck from '../components/inputCheck';
-import InputLabel from '../components/inputLabel';
-import InputLegend from '../components/inputLegend';
-import InputRadio from '../components/inputRadio';
-import InputDate from '../components/inputDate';
+import InputGivenName from '../components/form/inputGivenName';
+import InputFamilyName from '../components/form/inputFamilyName';
+import InputAddress from '../components/form/inputAddress';
+import InputPostalCode from '../components/form/inputPostalCode';
+import InputMobileNumber from '../components/form/inputMobileNumber';
+import InputEmail from '../components/form/inputEmail';
+import InputChildName from '../components/form/inputChildName';
+import InputChildBirthDate from '../components/form/inputChildBirthDate';
+import InputEstimatedDueDate from '../components/form/inputEstimatedDueDate';
+import InputSource from '../components/form/inputSource';
+import InputConsent from '../components/form/inputConsent';
+import { ErrorMessage, InputId, Route } from '../lib/types';
 
 export default function Win() {
+  const router = useRouter();
+  const [error, setError] = useState('');
+  const [isFormTouched, setIsFormTouched] = useState(false);
   const formOnSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    setIsFormTouched(true);
+
+    const formEl = e.target as HTMLFormElement;
+    const givenName = formEl[InputId.GIVEN_NAME];
+    const familyName = formEl[InputId.FAMILY_NAME];
+    const address = formEl[InputId.ADDRESS];
+    const postalCode = formEl[InputId.POSTAL_CODE];
+    const mobileNumber = formEl[InputId.MOBILE_NUMBER];
+    const email = formEl[InputId.EMAIL];
+
+    if (
+      !givenName.checkValidity() ||
+      !familyName.checkValidity() ||
+      !address.checkValidity() ||
+      !postalCode.checkValidity() ||
+      !mobileNumber.checkValidity() ||
+      !email.checkValidity()
+    ) {
+      return setError(ErrorMessage.FORM_INCOMPLETE);
+    }
+
+    const consent = formEl[InputId.CONSENT] as HTMLInputElement;
+
+    if (!consent.checked) {
+      return setError(ErrorMessage.FORM_CONSENT_UNCHECKED);
+    }
+
+    router.push(Route.UPLOAD);
   };
 
   return (
@@ -50,99 +89,63 @@ export default function Win() {
         <form className="flex flex-col gap-4 mt-6" onSubmit={formOnSubmit}>
           <div className={cn('flex flex-col gap-4', 'sm:flex-row sm:gap-6')}>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="first-name">
-                First Name <sup>*</sup>
-              </InputLabel>
-              <InputBox id="first-name" type="text" autoComplete="given-name" />
+              <InputGivenName />
             </div>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="last-name">
-                Last Name <sup>*</sup>
-              </InputLabel>
-              <InputBox id="last-name" type="text" autoComplete="family-name" />
+              <InputFamilyName />
             </div>
           </div>
-
           <div className={cn('flex flex-col gap-4', 'sm:flex-row sm:gap-6')}>
             <div className={cn('sm:w-2/3')}>
-              <InputLabel htmlFor="address">
-                Address <sup>*</sup>
-              </InputLabel>
-              <InputBox
-                id="address"
-                type="text"
-                autoComplete="street-address"
-              />
+              <InputAddress />
             </div>
             <div className={cn('sm:w-1/3')}>
-              <InputLabel htmlFor="zip-code">
-                ZIP Code <sup>*</sup>
-              </InputLabel>
-              <InputBox id="zip-code" type="text" autoComplete="postal-code" />
+              <InputPostalCode />
             </div>
           </div>
 
           <div className={cn('flex flex-col gap-4', 'sm:flex-row sm:gap-6')}>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="mobile-number">
-                Mobile Number <sup>*</sup>
-              </InputLabel>
-              <InputBox id="mobile-number" type="tel" />
+              <InputMobileNumber />
             </div>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="email">
-                Email Address <sup>*</sup>
-              </InputLabel>
-              <InputBox id="email" type="email" />
+              <InputEmail />
             </div>
           </div>
 
           <div className={cn('flex flex-col gap-4', 'sm:flex-row sm:gap-6')}>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="child-name">Name of Child</InputLabel>
-              <InputBox id="child-name" type="text" />
+              <InputChildName />
             </div>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="child-birth-date">
-                Child&apos;s Date of Birth
-              </InputLabel>
-              <InputDate value={null} onChange={() => {}} />
+              <InputChildBirthDate />
             </div>
           </div>
 
           <div className={cn('flex flex-col gap-4', 'sm:flex-row sm:gap-6')}>
             <div className={cn('sm:w-1/2')}>
-              <InputLabel htmlFor="estimated-due-date">
-                For Pregnant Mums - Estimated Due Date (optional)
-              </InputLabel>
-              <InputDate value={null} onChange={() => {}} />
+              <InputEstimatedDueDate />
             </div>
-            <div className={cn('hidden', 'sm:block sm:w-1/2')}></div>
+            <div className={cn('hidden', 'sm:block sm:w-1/2')} />
           </div>
 
-          <fieldset>
-            <InputLegend>Where did you hear about this contest?</InputLegend>
-            <div
-              className={cn(
-                'flex flex-col gap-2',
-                'sm:flex-row sm:flex-wrap sm:gap-4',
-                'md:gap-x-6'
-              )}
-            >
-              <InputRadio name="source" label="FairPrice" />
-              <InputRadio name="source" label="Doctor / Paediatrician" />
-              <InputRadio name="source" label="Newspaper" />
-              <InputRadio name="source" label="Facebook / Instagram" />
-              <InputRadio name="source" label="Online Banners" />
-              <InputRadio name="source" label="Others" />
-            </div>
-          </fieldset>
+          <InputSource />
+
           <div className="mt-4">
-            <InputCheck label="Yes, I consent to receiving information from AptaAdvantage on goods and services that best suit my needs and interest by mail, SMS, phone and email." />
+            <InputConsent isFormTouched={isFormTouched} />
           </div>
-          <div className="mt-4 text-center">
-            <Alert>Some fields are empty or contain an improper value.</Alert>
+
+          <div className="mt-4 text-[18px] font-thin">
+            Note: We do not store the information you provide in this form into
+            our server. This form is only shown for demonstration purposes only.
           </div>
+
+          {error && (
+            <div className="mt-4 text-center">
+              <Alert>{error}</Alert>
+            </div>
+          )}
+
           <div className={cn('mt-6 text-center', 'sm:mt-8')}>
             <Button type="submit">Submit</Button>
           </div>

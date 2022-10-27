@@ -1,19 +1,28 @@
 import React from 'react';
 import cn from 'classnames';
-import DatePicker from 'react-datepicker';
+import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { getAssetUrl } from '../lib/assets';
 import { inputBoxClassName, inputBoxPrimaryClassName } from './inputBox';
 import InputDateCalendar from './inputDateCalendar';
 
-type Props = { value: Date | null; onChange: (value: Date | null) => void };
+type Props = Omit<ReactDatePickerProps, 'value' | 'selected' | 'onChange'> & {
+  value: Date | null;
+  onChange: (value: Date | null) => void;
+};
 
-export default function InputDate({ value, onChange }: Props) {
+export default function InputDate({
+  className,
+  value,
+  onChange,
+  ...props
+}: Props) {
   const onClear = () => onChange(null);
 
   return (
     <div className="relative">
       <DatePicker
+        {...props}
         selected={value}
         dateFormat="dd/MM/yyyy"
         placeholderText="dd/mm/yyyy"
