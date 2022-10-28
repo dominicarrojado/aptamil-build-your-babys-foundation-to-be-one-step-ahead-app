@@ -58,7 +58,9 @@ jobs:
         run: yarn export
 
       - name: Delete 404 page
-        run: rm ./out/404.html
+        run: |
+          rm ./out/404.html
+          rm -rf ./out/404
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
