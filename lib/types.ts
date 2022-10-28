@@ -52,6 +52,7 @@ export enum GoogleAnalyticsEvent {
   CONTEST_SHARE = 'contest_share',
   CONTEST_FORM_SUBMIT = 'contest_form_submit',
   CONTEST_RECEIPT_UPLOAD = 'contest_receipt_upload',
+  MODAL_OPEN = 'modal_open',
 }
 
 export enum SocialName {
@@ -108,4 +109,9 @@ export type EventContestFormSubmit = {
 
 export type EventContestReceiptUpload = {
   event: GoogleAnalyticsEvent.CONTEST_RECEIPT_UPLOAD;
+};
+
+export type EventModalOpen = {
+  event: GoogleAnalyticsEvent.MODAL_OPEN;
+  buttonText: string;
 };

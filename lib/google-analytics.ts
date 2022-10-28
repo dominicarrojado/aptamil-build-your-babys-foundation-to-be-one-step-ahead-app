@@ -6,6 +6,7 @@ import {
   EventContestShare,
   EventContestStart,
   EventContestWin,
+  EventModalOpen,
 } from './types';
 
 declare global {
@@ -21,6 +22,7 @@ export function trackEvent(
     | EventContestShare
     | EventContestFormSubmit
     | EventContestReceiptUpload
+    | EventModalOpen
 ) {
   if (checkIsLocalhost()) {
     return;

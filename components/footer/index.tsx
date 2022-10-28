@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
+import { trackEvent } from '../../lib/google-analytics';
 import ModalDisclaimers from './modalDisclaimers';
 import ModalTnc from './modalTnc';
+import { GoogleAnalyticsEvent } from '../../lib/types';
 
 export default function Footer() {
   const [dcIsOpen, setDcIsOpen] = useState(false);
   const [tncIsOpen, setTncIsOpen] = useState(false);
-  const openDcDialog = () => setDcIsOpen(true);
+  const openDcDialog = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setDcIsOpen(true);
+
+    const { currentTarget } = e;
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.MODAL_OPEN,
+      buttonText: currentTarget.textContent || currentTarget.innerText,
+    });
+  };
   const closeDcDialog = () => setDcIsOpen(false);
-  const openTncDialog = () => setTncIsOpen(true);
+  const openTncDialog = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setTncIsOpen(true);
+
+    const { currentTarget } = e;
+
+    trackEvent({
+      event: GoogleAnalyticsEvent.MODAL_OPEN,
+      buttonText: currentTarget.textContent || currentTarget.innerText,
+    });
+  };
   const closeTncDialog = () => setTncIsOpen(false);
 
   return (
