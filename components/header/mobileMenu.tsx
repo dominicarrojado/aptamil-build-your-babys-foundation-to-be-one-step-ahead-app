@@ -43,13 +43,13 @@ export default function MobileMenu() {
                 <Transition
                   as={Fragment}
                   show={isOpen}
-                  appear={true}
                   enter="transition-opacity ease-out duration-300 delay-500"
                   enterFrom="opacity-0"
                   enterTo="opacity-100"
                   leave="transition-opacity ease-in duration-300 delay-500"
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
+                  appear
                 >
                   <button
                     type="button"
@@ -73,7 +73,6 @@ export default function MobileMenu() {
                     <Transition
                       key={num}
                       show={isOpen}
-                      appear={true}
                       enter="transition ease-out duration-300"
                       enterFrom="opacity-0 -translate-x-[20px]"
                       enterTo="opacity-100 translate-x-0"
@@ -83,6 +82,7 @@ export default function MobileMenu() {
                       style={{
                         transitionDelay: `${idx * 100 + 300}ms`,
                       }}
+                      appear
                     >
                       <Link href={menuItem.path}>
                         <a

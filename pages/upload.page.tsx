@@ -54,7 +54,7 @@ export default function Upload() {
 
   return (
     <FadeIn>
-      <NextSeo noindex={true} />
+      <NextSeo noindex />
       <Background src={getAssetUrl('images/bg-space-7.png')} />
       <main
         className={cn(

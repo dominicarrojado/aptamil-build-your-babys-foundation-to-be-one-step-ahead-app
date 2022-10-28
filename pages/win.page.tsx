@@ -79,7 +79,7 @@ export default function Win() {
 
   return (
     <FadeIn>
-      <NextSeo noindex={true} />
+      <NextSeo noindex />
       <Background src={getAssetUrl('images/bg-space-6.png')} />
       <main
         className={cn(
