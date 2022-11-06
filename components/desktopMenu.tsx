@@ -31,7 +31,6 @@ export default function DesktopMenu() {
               <a
                 className="group flex items-center font-kghappy font-bold text-[10px] text-sky-450"
                 aria-current={isActive ? 'page' : undefined}
-                onClick={() => close()}
               >
                 <img
                   src={getAssetUrl(`images/icon-circle-${num}.png`)}
