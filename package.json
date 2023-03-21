@@ -32,6 +32,7 @@
     "eslint": "8.19.0",
     "eslint-config-next": "12.2.2",
     "eslint-config-prettier": "^8.5.0",
+    "gh-pages": "^5.0.0",
     "jest": "^28.1.2",
     "jest-environment-jsdom": "^28.1.2",
     "postcss": "^8.4.14",
